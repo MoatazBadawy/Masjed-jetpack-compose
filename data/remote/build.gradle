@@ -11,6 +11,7 @@ android {
         minSdk 24
         targetSdk 33
 
+        buildConfigField "String", "BASE_URL", "\"http://0.0.0.0:8080/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -35,4 +36,5 @@ dependencies {
     implementation 'javax.inject:javax.inject:1'
     implementation "com.google.code.gson:gson:$gson_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation project(":data:models")
 }

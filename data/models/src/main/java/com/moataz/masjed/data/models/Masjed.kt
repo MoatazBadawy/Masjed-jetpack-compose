@@ -1,11 +1,10 @@
-package com.moataz.masjed.data.local.entity
+package com.moataz.masjed.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.moataz.masjed.data.local.entity.utils.EntityConstant.MASJED_TABLE
 
-@Entity(tableName = MASJED_TABLE)
-data class MasjedEntity(
+@Entity(tableName = "MASJED_TABLE")
+data class Masjed(
     @PrimaryKey
     val masjedId: Int,
     val masjedName: String,
