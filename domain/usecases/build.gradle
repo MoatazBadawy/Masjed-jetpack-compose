@@ -9,6 +9,7 @@ java {
 }
 
 dependencies {
-    implementation 'androidx.room:room-common:2.5.1'
-    implementation project(":domain:entities")
+    implementation 'javax.inject:javax.inject:1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation project(":domain:repository")
 }

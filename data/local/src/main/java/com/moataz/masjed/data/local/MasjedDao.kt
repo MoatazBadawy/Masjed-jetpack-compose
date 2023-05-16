@@ -4,22 +4,19 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.moataz.masjed.data.models.Masjed
+import com.moataz.masjed.data.models.MasjedModel
 
 @Dao
 interface MasjedDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMasjed(masjed: Masjed)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMasjedDetails(masjed: Masjed)
+    suspend fun insertMasjed(vararg masjedModel: MasjedModel)
 
     @Query("DELETE FROM MASJED_TABLE")
     suspend fun deleteMasjeds()
 
     @Query("SELECT * FROM MASJED_TABLE")
-    suspend fun getMasjeds(): List<Masjed>
+    suspend fun getALlMasjeds(): List<MasjedModel>
 
     @Query("SELECT * FROM MASJED_TABLE WHERE  masjedId = :masjedId")
-    suspend fun getMasjedDetailsById(masjedId: Int): Masjed
+    suspend fun getMasjedDetailsById(masjedId: Int): MasjedModel
 }

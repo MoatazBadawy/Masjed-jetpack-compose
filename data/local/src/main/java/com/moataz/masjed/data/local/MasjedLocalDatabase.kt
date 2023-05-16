@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.moataz.masjed.data.models.Masjed
+import com.moataz.masjed.data.models.MasjedModel
 
-@Database(entities = [Masjed::class], version = 1)
+@Database(entities = [MasjedModel::class], version = 1)
 abstract class MasjedDatabase : RoomDatabase() {
     abstract fun masjedDao(): MasjedDao
 }
