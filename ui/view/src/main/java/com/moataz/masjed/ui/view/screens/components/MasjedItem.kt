@@ -76,10 +76,10 @@ fun MasjedItem(
             )
             Text(
                 text = masjed.masjedDescription,
-                modifier = Modifier.padding(top = 8.dp),
+                modifier = Modifier.padding(top = 8.dp, end = 170.dp),
                 color = TextColor,
             )
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(23.dp))
             Button(
                 onClick = onButtonClick,
                 modifier = Modifier
