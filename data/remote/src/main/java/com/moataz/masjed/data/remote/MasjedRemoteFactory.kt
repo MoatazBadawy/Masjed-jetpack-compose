@@ -18,7 +18,8 @@ object MasjedRemoteFactory {
         client: () -> OkHttpClient,
         gsonConverterFactory: GsonConverterFactory,
     ): MasjedRemote {
-        return Retrofit.Builder().baseUrl(BuildConfig.BASE_URL).client(client())
+        return Retrofit.Builder().baseUrl(BuildConfig.BASE_URL)
+            .client(client())
             .addConverterFactory(gsonConverterFactory).build()
             .create(MasjedRemote::class.java)
     }

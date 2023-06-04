@@ -43,34 +43,27 @@ fun MasjedsScreen(
         content = {
             Box(modifier = Modifier.fillMaxSize()) {
                 when {
-                    masjedsUiState.isLoading -> Loading()
-
-                    masjedsUiState.isSuccessful && masjedsUiState.masjeds.isNotEmpty() -> {
-                        LazyColumn {
-                            items(masjedsUiState.masjeds) { masjed ->
-                                MasjedItem(masjed = masjed) {}
-                            }
-                        }
+                    masjedsUiState.isLoading -> {
+                        Loading()
                     }
-
-                    masjedsUiState.isError && masjedsUiState.masjeds.isEmpty() -> {
+                    masjedsUiState.isError -> {
                         Snackbar(
-                            modifier = Modifier
-                                .padding(16.dp)
-                                .align(Alignment.BottomEnd),
+                            modifier = Modifier.align(Alignment.BottomCenter),
                             action = {
-                                TextButton(onClick = viewModel::retryLoadMasjeds) {
-                                    Text(
-                                        text = "Retry",
-                                        color = Color.White,
-                                    )
+                                TextButton(onClick = { viewModel.retryLoadMasjeds() }) {
+                                    Text(text = "Retry")
                                 }
                             },
-                        ) {
-                            Text(
-                                text = "Failed to load MASJEDS",
-                                color = Color.White,
-                            )
+                            content = {
+                                Text(text = "Error loading masjeds")
+                            }
+                        )
+                    }
+                    else -> {
+                        LazyColumn {
+                            items(masjedsUiState.masjeds) { masjed ->
+                                MasjedItem(masjed = masjed, onButtonClick = { /* Handle click to navigate to masjed details screen */ })
+                            }
                         }
                     }
                 }

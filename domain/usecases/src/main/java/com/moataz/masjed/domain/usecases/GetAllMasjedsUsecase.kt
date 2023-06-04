@@ -18,7 +18,22 @@ class GetAllMasjedsUsecase @Inject constructor(
     suspend operator fun invoke(): Flow<MasjedResult> {
         return flow {
             emit(MasjedResult.Loading)
-            emitAll(interactWithDatabase(masjedRemoteDatasource.getAllMasjeds()))
+            val localData = masjedLocalDataSource.getAllMasjeds()
+
+            if (localData.isNotEmpty()) {
+                emit(MasjedResult.Success(localData))
+            }
+
+            try {
+                val remoteData = masjedRemoteDatasource.getAllMasjeds()
+                emitAll(interactWithDatabase(remoteData))
+            } catch (e: UnknownHostException) {
+                if (localData.isNotEmpty()) {
+                    emit(MasjedResult.NoInternet(localData))
+                } else {
+                    emit(MasjedResult.Failure(e))
+                }
+            }
         }
     }
 
@@ -35,15 +50,8 @@ class GetAllMasjedsUsecase @Inject constructor(
                     emit(MasjedResult.EmptyResult)
                 }
             }
-        } catch (e: UnknownHostException) {
-            flowOf(handleNoInternet(e))
         } catch (e: Exception) {
             flowOf(MasjedResult.Failure(e))
         }
-    }
-
-    private suspend fun handleNoInternet(e: UnknownHostException): MasjedResult {
-        return if (masjedLocalDataSource.getAllMasjeds().isEmpty()) MasjedResult.Failure(e)
-        else MasjedResult.NoInternet(masjedLocalDataSource.getAllMasjeds())
     }
 }

@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.sp
 import com.moataz.masjed.ui.view.theme.Background
 import com.moataz.masjed.ui.view.theme.ButtonColor
 import com.moataz.masjed.ui.view.theme.TextColor
-import com.moataz.masjed.ui.view.theme.Transparent
 import com.moataz.masjed.ui.viewmodel.models.MasjedUI
 
 @Composable
@@ -39,52 +38,10 @@ fun MasjedItem(
         elevation = 2.dp,
         modifier = Modifier
             .fillMaxWidth()
-            .height(160.dp),
-        backgroundColor = Transparent,
+            .height(160.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        backgroundColor = Background,
     ) {
-        Card(
-            modifier = Modifier
-                .padding(top = 24.dp),
-            backgroundColor = Background,
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-                    .padding(start = 12.dp),
-                horizontalAlignment = Alignment.Start,
-            ) {
-                Text(
-                    text = masjed.masjedName,
-                    modifier = Modifier.padding(top = 16.dp),
-                    color = TextColor,
-                    fontWeight = FontWeight.Bold,
-                )
-                Text(
-                    text = masjed.masjedDescription,
-                    modifier = Modifier.padding(top = 8.dp),
-                    color = TextColor,
-                )
-                Spacer(modifier = Modifier.height(32.dp))
-                Button(
-                    onClick = onButtonClick,
-                    modifier = Modifier
-                        .width(85.dp)
-                        .height(40.dp)
-                        .padding(bottom = 8.dp),
-                    shape = RoundedCornerShape(23.dp),
-                    border = BorderStroke(3.dp, ButtonColor),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = ButtonColor),
-                ) {
-                    Text(
-                        text = "BROWSE",
-                        fontSize = 10.sp,
-                        color = Color.White,
-                    )
-                }
-            }
-        }
-
         Box {
             Row(
                 modifier = Modifier
@@ -102,6 +59,42 @@ fun MasjedItem(
                 ) {
                     ImageLoading(url = masjed.masjedImg)
                 }
+            }
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .padding(start = 12.dp),
+            horizontalAlignment = Alignment.Start,
+        ) {
+            Text(
+                text = masjed.masjedName,
+                modifier = Modifier.padding(top = 16.dp),
+                color = TextColor,
+                fontWeight = FontWeight.Bold,
+            )
+            Text(
+                text = masjed.masjedDescription,
+                modifier = Modifier.padding(top = 8.dp),
+                color = TextColor,
+            )
+            Spacer(modifier = Modifier.height(32.dp))
+            Button(
+                onClick = onButtonClick,
+                modifier = Modifier
+                    .width(85.dp)
+                    .height(45.dp)
+                    .padding(bottom = 8.dp),
+                shape = RoundedCornerShape(23.dp),
+                border = BorderStroke(3.dp, ButtonColor),
+                colors = ButtonDefaults.buttonColors(backgroundColor = ButtonColor),
+            ) {
+                Text(
+                    text = "BROWSE",
+                    fontSize = 10.sp,
+                    color = Color.White,
+                )
             }
         }
     }

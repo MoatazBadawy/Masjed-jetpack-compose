@@ -20,7 +20,9 @@ class MasjedLocalDatasourceImpl @Inject constructor(
     }
 
     override suspend fun getMasjedDetailsById(masjedId: Int): Masjed {
-        return masjedDao.getMasjedDetailsById(masjedId).toMasjed()
+        return withContext(Dispatchers.IO) {
+            masjedDao.getMasjedDetailsById(masjedId).toMasjed()
+        }
     }
 
     override suspend fun insertMasjed(masjed: Masjed) {
