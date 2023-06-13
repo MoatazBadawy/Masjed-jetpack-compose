@@ -6,11 +6,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "MASJED_TABLE")
 data class MasjedModel(
     @PrimaryKey
-    val masjedId: Int? = null,
-    val masjedName: String? = null,
-    val masjedDescription: String? = null,
-    val masjedImg: String? = null,
-    val masjedWorshipers: Int? = null,
-    val masjedImams: Int? = null,
-    val masjedWorkers: Int? = null,
+    val id: Int? = null,
+    val name: String? = null,
+    val description: String? = null,
+    val imgUrl: String? = null,
 )

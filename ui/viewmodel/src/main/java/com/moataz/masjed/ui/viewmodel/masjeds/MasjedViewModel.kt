@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moataz.masjed.domain.usecases.GetAllMasjedsUsecase
 import com.moataz.masjed.domain.usecases.utils.MasjedResult
-import com.moataz.masjed.ui.viewmodel.models.MasjedsUIState
 import com.moataz.masjed.ui.viewmodel.models.mapper.toMasjeds
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -9,24 +9,18 @@ fun List<MasjedModel>.toMasjeds(): List<Masjed> {
 
 fun MasjedModel.toMasjed(): Masjed {
     return Masjed(
-        masjedId = masjedId ?: 0,
-        masjedName = masjedName ?: "",
-        masjedDescription = masjedDescription ?: "",
-        masjedImg = masjedImg ?: "",
-        masjedWorshipers = masjedWorshipers ?: 0,
-        masjedImams = masjedImams ?: 0,
-        masjedWorkers = masjedWorkers ?: 0,
+        id = id ?: 0,
+        name = name ?: "",
+        description = description ?: "",
+        imgUrl = imgUrl ?: "",
     )
 }
 
 fun Masjed.toMasjedModel(): MasjedModel {
     return MasjedModel(
-        masjedId = masjedId,
-        masjedName = masjedName,
-        masjedDescription = masjedDescription,
-        masjedImg = masjedImg,
-        masjedWorshipers = masjedWorshipers,
-        masjedImams = masjedImams,
-        masjedWorkers = masjedWorkers,
+        id = id,
+        name = name,
+        description = description,
+        imgUrl = imgUrl,
     )
 }

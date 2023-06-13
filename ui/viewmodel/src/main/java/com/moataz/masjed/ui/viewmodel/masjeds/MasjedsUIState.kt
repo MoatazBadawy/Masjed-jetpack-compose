@@ -1,4 +1,6 @@
-package com.moataz.masjed.ui.viewmodel.models
+package com.moataz.masjed.ui.viewmodel.masjeds
+
+import com.moataz.masjed.ui.viewmodel.models.MasjedUI
 
 data class MasjedsUIState(
     val isLoading : Boolean = true,

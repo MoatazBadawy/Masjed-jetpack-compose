@@ -33,6 +33,8 @@ class GetAllMasjedsUsecase @Inject constructor(
                 } else {
                     emit(MasjedResult.Failure(e))
                 }
+            } catch (e: Exception) {
+                emit(MasjedResult.Failure(e))
             }
         }
     }
