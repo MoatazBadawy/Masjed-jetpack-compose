@@ -44,9 +44,7 @@ fun MasjedsScreen(
                         items(masjedsUiState.masjeds) { masjed ->
                             MasjedItem(
                                 masjed = masjed,
-                                onButtonClick = {
-
-                                }
+                                onButtonClick = { /*TODO*/ }
                             )
                         }
                     }

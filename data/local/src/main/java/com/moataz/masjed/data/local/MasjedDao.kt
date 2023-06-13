@@ -17,6 +17,6 @@ interface MasjedDao {
     @Query("SELECT * FROM MASJED_TABLE")
     suspend fun getALlMasjeds(): List<MasjedModel>
 
-    @Query("SELECT * FROM MASJED_TABLE WHERE  masjedId = :masjedId")
+    @Query("SELECT * FROM MASJED_TABLE WHERE  id = :masjedId")
     suspend fun getMasjedDetailsById(masjedId: Int): MasjedModel
 }

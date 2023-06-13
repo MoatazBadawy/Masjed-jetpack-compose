@@ -57,7 +57,7 @@ fun MasjedItem(
                     horizontalArrangement = Arrangement.End,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    ImageLoading(url = masjed.masjedImg)
+                    ImageLoading(url = masjed.imgUrl)
                 }
             }
         }
@@ -69,13 +69,13 @@ fun MasjedItem(
             horizontalAlignment = Alignment.Start,
         ) {
             Text(
-                text = masjed.masjedName,
+                text = masjed.name,
                 modifier = Modifier.padding(top = 16.dp),
                 color = TextColor,
                 fontWeight = FontWeight.Bold,
             )
             Text(
-                text = masjed.masjedDescription,
+                text = masjed.description,
                 modifier = Modifier.padding(top = 8.dp, end = 170.dp),
                 color = TextColor,
             )
@@ -105,8 +105,8 @@ fun MasjedItem(
 fun MasjedItemPreview() {
     MasjedItem(
         masjed = MasjedUI(
-            masjedName = "Al-Masjid an-Nabawi",
-            masjedDescription = "The Prophet's Masjed",
+            name = "Al-Masjid an-Nabawi",
+            description = "The Prophet's Masjed",
         ),
         onButtonClick = {}
     )
