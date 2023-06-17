@@ -15,9 +15,9 @@ class GetAllMasjedsUsecase @Inject constructor(
     private val masjedRemoteDatasource: MasjedRemoteDatasource,
     private val masjedLocalDataSource: MasjedLocalDatasource,
 ) {
-    suspend operator fun invoke(): Flow<MasjedResult> {
+    suspend operator fun invoke(): Flow<MasjedResult<List<Masjed>>> {
         return flow {
-            emit(MasjedResult.Loading)
+            emit(MasjedResult.Loading())
             val localData = masjedLocalDataSource.getAllMasjeds()
 
             if (localData.isNotEmpty()) {
@@ -39,7 +39,7 @@ class GetAllMasjedsUsecase @Inject constructor(
         }
     }
 
-    private suspend fun interactWithDatabase(masjeds: List<Masjed>): Flow<MasjedResult> {
+    private suspend fun interactWithDatabase(masjeds: List<Masjed>): Flow<MasjedResult<List<Masjed>>> {
         return try {
             flow {
                 if (masjeds.isNotEmpty()) {
@@ -49,7 +49,7 @@ class GetAllMasjedsUsecase @Inject constructor(
                     }
                     emit(MasjedResult.Success(masjedLocalDataSource.getAllMasjeds()))
                 } else {
-                    emit(MasjedResult.EmptyResult)
+                    emit(MasjedResult.EmptyResult())
                 }
             }
         } catch (e: Exception) {

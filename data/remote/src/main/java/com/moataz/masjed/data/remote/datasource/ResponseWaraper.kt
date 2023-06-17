@@ -1,6 +1,6 @@
 package com.moataz.masjed.data.remote.datasource
 
-import com.moataz.masjed.data.models.MasjedResponse
+import com.moataz.masjed.data.models.response.MasjedResponse
 import retrofit2.Response
 import java.io.IOException
 

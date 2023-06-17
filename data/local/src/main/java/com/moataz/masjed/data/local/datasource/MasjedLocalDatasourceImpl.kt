@@ -1,10 +1,12 @@
 package com.moataz.masjed.data.local.datasource
 
 import com.moataz.masjed.data.local.MasjedDao
-import com.moataz.masjed.data.models.mapper.toMasjed
+import com.moataz.masjed.data.models.mapper.toMasjedDetails
+import com.moataz.masjed.data.models.mapper.toMasjedDetailsModel
 import com.moataz.masjed.data.models.mapper.toMasjedModel
 import com.moataz.masjed.data.models.mapper.toMasjeds
 import com.moataz.masjed.domain.entities.Masjed
+import com.moataz.masjed.domain.entities.MasjedDetails
 import com.moataz.masjed.domain.repository.MasjedLocalDatasource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -19,9 +21,9 @@ class MasjedLocalDatasourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getMasjedDetailsById(masjedId: Int): Masjed {
+    override suspend fun getMasjedDetailsById(masjedId: Int): MasjedDetails {
         return withContext(Dispatchers.IO) {
-            masjedDao.getMasjedDetailsById(masjedId).toMasjed()
+            masjedDao.getMasjedDetailsById(masjedId).toMasjedDetails()
         }
     }
 
@@ -31,9 +33,21 @@ class MasjedLocalDatasourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun insertMasjedDetails(masjedDetails: MasjedDetails) {
+        withContext(Dispatchers.IO) {
+            masjedDao.insertMasjedDetails(masjedDetails.toMasjedDetailsModel())
+        }
+    }
+
     override suspend fun clearMasjedsCache() {
         withContext(Dispatchers.IO) {
             masjedDao.deleteMasjeds()
+        }
+    }
+
+    override suspend fun clearMasjedDetailsCache() {
+        withContext(Dispatchers.IO) {
+            masjedDao.deleteMasjedDetails()
         }
     }
 }

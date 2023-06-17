@@ -1,7 +1,8 @@
 package com.moataz.masjed.data.remote
 
+import com.moataz.masjed.data.models.MasjedDetailsModel
 import com.moataz.masjed.data.models.MasjedModel
-import com.moataz.masjed.data.models.MasjedResponse
+import com.moataz.masjed.data.models.response.MasjedResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -12,8 +13,8 @@ interface MasjedRemote {
     @GET("getMasjeds")
     suspend fun getAllMasjeds(): Response<MasjedResponse<List<MasjedModel>>>
 
-    @GET("getMasjed/{id}")
-    suspend fun getMasjedById(@Path("id") id: Int): Response<MasjedResponse<MasjedModel>>
+    @GET("getMasjedDetails/{id}")
+    suspend fun getMasjedDetailsById(@Path("id") id: Int): Response<MasjedResponse<MasjedDetailsModel>>
 
     @POST("addNewMasjed")
     suspend fun addNewMasjed(@Body masjedModelDto: MasjedModel): Response<MasjedResponse<MasjedModel>>

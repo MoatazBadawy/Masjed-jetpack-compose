@@ -1,4 +1,4 @@
-package com.moataz.masjed.data.models
+package com.moataz.masjed.data.models.response
 
 data class MasjedResponse<T>(
     val status: Boolean,
