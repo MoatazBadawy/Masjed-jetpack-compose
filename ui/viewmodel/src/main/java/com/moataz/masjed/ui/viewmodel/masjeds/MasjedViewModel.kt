@@ -34,7 +34,7 @@ class MasjedViewModel @Inject constructor(
                         }
 
                         is MasjedResult.Success -> _masjedsUiState.update {
-                            it.copy(isLoading = false, masjeds = masjedResult.masjeds.toMasjeds())
+                            it.copy(isLoading = false, masjeds = masjedResult.data.toMasjeds())
                         }
 
                         is MasjedResult.EmptyResult -> _masjedsUiState.update {
@@ -44,7 +44,7 @@ class MasjedViewModel @Inject constructor(
                         is MasjedResult.NoInternet -> _masjedsUiState.update {
                             it.copy(
                                 isLoading = false,
-                                masjeds = masjedResult.cachedMasjeds.toMasjeds()
+                                masjeds = masjedResult.cashedData.toMasjeds()
                             )
                         }
 
