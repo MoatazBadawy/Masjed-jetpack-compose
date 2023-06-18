@@ -11,6 +11,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.moataz.masjed.ui.view.screens.components.Loading
@@ -21,6 +22,7 @@ import com.moataz.masjed.ui.viewmodel.masjeds.MasjedViewModel
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MasjedsScreen(
+    navController: NavController,
     viewModel: MasjedViewModel = hiltViewModel(),
 ) {
     val masjedsUiState by viewModel.masjedsUiState.collectAsState()
