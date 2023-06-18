@@ -17,6 +17,7 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.moataz.masjed.ui.view.screens.components.Loading
 import com.moataz.masjed.ui.view.screens.components.MasjedItem
 import com.moataz.masjed.ui.view.screens.components.MasjedToolbar
+import com.moataz.masjed.ui.view.screens.masjed_details.navigateToMasjedDetails
 import com.moataz.masjed.ui.viewmodel.masjeds.MasjedViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -46,7 +47,9 @@ fun MasjedsScreen(
                         items(masjedsUiState.masjeds) { masjed ->
                             MasjedItem(
                                 masjed = masjed,
-                                onButtonClick = { /*TODO*/ }
+                                onButtonClick = {
+                                    navController.navigateToMasjedDetails(masjed.id)
+                                }
                             )
                         }
                     }
